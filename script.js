@@ -395,16 +395,16 @@ function renderContent() {
   var contentEl = document.getElementById('menuContent');
   contentEl.innerHTML = '';
 
-  for (var i = 0; i < categories.length; i++) {
-    contentEl.appendChild(buildCategoryPanel(categories[i]));
+  if (currentTab === 'Contáctanos') {
+    contentEl.appendChild(buildContactPanel());
+  } else {
+    contentEl.appendChild(buildCategoryPanel(currentTab));
   }
-
-  contentEl.appendChild(buildContactPanel());
 }
 
 function buildCategoryPanel(cat) {
   var panel = document.createElement('div');
-  panel.className = 'category-panel' + (cat === currentTab ? ' active' : '');
+  panel.className = 'category-panel active';
 
   var header = document.createElement('div');
   header.className = 'category-header';
@@ -431,6 +431,8 @@ function buildCard(item) {
   photo.className = 'item-photo';
 
   var img = document.createElement('img');
+  img.loading = 'lazy';
+  img.decoding = 'async';
   img.src = item.image;
   img.alt = item.name;
   img.addEventListener('error', function() {
@@ -475,7 +477,7 @@ function buildCard(item) {
 
 function buildContactPanel() {
   var panel = document.createElement('div');
-  panel.className = 'category-panel contact-panel' + (currentTab === 'Contáctanos' ? ' active' : '');
+  panel.className = 'category-panel contact-panel active';
 
   var header = document.createElement('div');
   header.className = 'category-header';

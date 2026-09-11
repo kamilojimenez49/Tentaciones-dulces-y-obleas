@@ -105,58 +105,8 @@
     </div>
 
     <div class="payment-section">
-      <div class="payment-tabs">
-        <button class="payment-tab active" id="tabCard" data-method="card">💳 Tarjeta</button>
-        <button class="payment-tab" id="tabPse" data-method="pse">🏦 PSE</button>
-      </div>
-
-      <form class="payment-form" id="cardForm">
-        <label>Nombre en la tarjeta
-          <input type="text" placeholder="Como aparece en la tarjeta" required>
-        </label>
-        <label>Número de tarjeta
-          <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" required>
-        </label>
-        <div class="form-row">
-          <label>Vencimiento
-            <input type="text" placeholder="MM/AA" maxlength="5" required>
-          </label>
-          <label>CVV
-            <input type="text" placeholder="123" maxlength="4" required>
-          </label>
-        </div>
-      </form>
-
-      <form class="payment-form" id="pseForm" style="display:none">
-        <label>Banco
-          <select required>
-            <option value="">Selecciona tu banco</option>
-            <option>Bancolombia</option>
-            <option>Banco de Bogotá</option>
-            <option>Davivienda</option>
-            <option>BBVA Colombia</option>
-            <option>Banco de Occidente</option>
-            <option>Nequi</option>
-            <option>Daviplata</option>
-          </select>
-        </label>
-        <label>Tipo de persona
-          <select required>
-            <option value="">Selecciona una opción</option>
-            <option>Persona Natural</option>
-            <option>Persona Jurídica</option>
-          </select>
-        </label>
-        <label>Número de documento
-          <input type="text" placeholder="Cédula o NIT" required>
-        </label>
-        <label>Correo electrónico
-          <input type="email" placeholder="correo@ejemplo.com" required>
-        </label>
-      </form>
-
-      <button class="btn-pay" id="payBtn">PAGAR</button>
-      <p class="checkout-disclaimer">Este formulario es una demostración visual. Para procesar pagos reales se debe conectar una pasarela de pago (PSE, Wompi, ePayco, etc.) desde un servidor.</p>
+      <button class="btn-pay" id="payBtn">📲 PEDIR POR WHATSAPP</button>
+      <p class="checkout-disclaimer">Al continuar se abrirá WhatsApp con tu pedido y el total, listo para enviarlo y coordinar el pago con nosotros.</p>
     </div>
   </div>
 </div>

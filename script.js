@@ -100,11 +100,14 @@ var data = {
 // ============================================
 var contact = {
   email: 'contacto@tentaciones.com',
-  phone: '+57 300 000 0000',
+  phone: '+57 318 693 2963',
   address: 'Floridablanca, Santander',
   instagram: '@tentaciones.dulces',
   tiktok: '@tentaciones.dulces'
 };
+
+// Número de WhatsApp para recibir los pedidos (formato internacional, sin +, sin espacios)
+var whatsappNumber = '573186932963';
 
 var currentTab = categories[0];
 var cart = loadCart();
@@ -124,10 +127,6 @@ var checkoutOverlay = document.getElementById('checkoutOverlay');
 var closeCheckoutBtn = document.getElementById('closeCheckoutBtn');
 var checkoutItemsList = document.getElementById('checkoutItemsList');
 var checkoutTotalEl = document.getElementById('checkoutTotal');
-var tabCard = document.getElementById('tabCard');
-var tabPse = document.getElementById('tabPse');
-var cardForm = document.getElementById('cardForm');
-var pseForm = document.getElementById('pseForm');
 var payBtn = document.getElementById('payBtn');
 
 function loadCart() {
@@ -312,27 +311,20 @@ goToCheckoutBtn.addEventListener('click', openCheckout);
 closeCheckoutBtn.addEventListener('click', closeCheckout);
 checkoutOverlay.addEventListener('click', closeCheckout);
 
-tabCard.addEventListener('click', function() {
-  tabCard.classList.add('active');
-  tabPse.classList.remove('active');
-  cardForm.style.display = 'flex';
-  pseForm.style.display = 'none';
-});
-
-tabPse.addEventListener('click', function() {
-  tabPse.classList.add('active');
-  tabCard.classList.remove('active');
-  pseForm.style.display = 'flex';
-  cardForm.style.display = 'none';
-});
+function buildWhatsAppMessage() {
+  var lines = ['¡Hola! Quiero hacer este pedido:', ''];
+  for (var i = 0; i < cart.length; i++) {
+    lines.push(cart[i].qty + 'x ' + cart[i].name + ' - $' + formatPrice(cart[i].price * cart[i].qty));
+  }
+  lines.push('');
+  lines.push('Total: $' + formatPrice(cartTotal()));
+  return lines.join('\n');
+}
 
 payBtn.addEventListener('click', function() {
-  var activeForm = tabCard.classList.contains('active') ? cardForm : pseForm;
-  if (!activeForm.checkValidity()) {
-    activeForm.reportValidity();
-    return;
-  }
-  showToast('Pago procesado con éxito (demostración)');
+  var message = buildWhatsAppMessage();
+  window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message), '_blank');
+  showToast('Redirigiendo a WhatsApp...');
   cart = [];
   saveCart();
   updateCartCount();

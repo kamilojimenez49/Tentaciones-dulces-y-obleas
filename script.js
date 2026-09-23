@@ -134,6 +134,8 @@ var closeCheckoutBtn = document.getElementById('closeCheckoutBtn');
 var checkoutItemsList = document.getElementById('checkoutItemsList');
 var checkoutTotalEl = document.getElementById('checkoutTotal');
 var payBtn = document.getElementById('payBtn');
+var customerAddressInput = document.getElementById('customerAddress');
+var customerPhoneInput = document.getElementById('customerPhone');
 
 function loadCart() {
   var saved = localStorage.getItem('cartItems');
@@ -304,6 +306,8 @@ function openCheckout() {
   }
   closeCart();
   renderCheckoutSummary();
+  clearFieldError(customerAddressInput);
+  clearFieldError(customerPhoneInput);
   checkoutModal.classList.add('open');
   checkoutOverlay.classList.add('open');
 }
@@ -317,23 +321,64 @@ goToCheckoutBtn.addEventListener('click', openCheckout);
 closeCheckoutBtn.addEventListener('click', closeCheckout);
 checkoutOverlay.addEventListener('click', closeCheckout);
 
-function buildWhatsAppMessage() {
+function buildWhatsAppMessage(address, phone) {
   var lines = ['¡Hola! Quiero hacer este pedido:', ''];
   for (var i = 0; i < cart.length; i++) {
     lines.push(cart[i].qty + 'x ' + cart[i].name + ' - $' + formatPrice(cart[i].price * cart[i].qty));
   }
   lines.push('');
   lines.push('Total: $' + formatPrice(cartTotal()));
+  lines.push('');
+  lines.push('Dirección exacta y barrio: ' + address);
+  lines.push('Teléfono de contacto: ' + phone);
   return lines.join('\n');
 }
 
+function setFieldError(input, hasError) {
+  input.closest('.form-group').classList.toggle('invalid', hasError);
+}
+
+function clearFieldError(input) {
+  setFieldError(input, false);
+}
+
+function isValidPhone(value) {
+  var digits = value.replace(/\D/g, '');
+  return digits.length >= 7;
+}
+
+customerAddressInput.addEventListener('input', function() {
+  clearFieldError(customerAddressInput);
+});
+
+customerPhoneInput.addEventListener('input', function() {
+  clearFieldError(customerPhoneInput);
+});
+
 payBtn.addEventListener('click', function() {
-  var message = buildWhatsAppMessage();
+  var address = customerAddressInput.value.trim();
+  var phone = customerPhoneInput.value.trim();
+
+  var addressValid = address.length >= 5;
+  var phoneValid = isValidPhone(phone);
+
+  setFieldError(customerAddressInput, !addressValid);
+  setFieldError(customerPhoneInput, !phoneValid);
+
+  if (!addressValid || !phoneValid) {
+    showToast('Completa la dirección y el teléfono para continuar');
+    (addressValid ? customerPhoneInput : customerAddressInput).focus();
+    return;
+  }
+
+  var message = buildWhatsAppMessage(address, phone);
   window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message), '_blank');
   showToast('Redirigiendo a WhatsApp...');
   cart = [];
   saveCart();
   updateCartCount();
+  customerAddressInput.value = '';
+  customerPhoneInput.value = '';
   closeCheckout();
 });
 

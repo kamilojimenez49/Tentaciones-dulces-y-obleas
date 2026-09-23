@@ -51,7 +51,17 @@ var data = {
   ],
   'A Otro Nivel': [
     { id: 'aon1', name: 'A Otro Nivel Original', desc: 'Nuestra combinación estrella', price: 10500, image: 'images/aon1.jpg' },
-    { id: 'aon2', name: 'A Otro Nivel Explosión', desc: 'Todos los toppings en una', price: 11500, image: 'images/aon2.jpg' }
+    { id: 'aon2', name: 'A Otro Nivel Explosión', desc: 'Todos los toppings en una', price: 11500, image: 'images/aon2.jpg' },
+    { id: 'aon3', name: 'A Otro Nivel Choco Fresa', desc: 'Helado, fresas, chocolate y crema', price: 11000, image: 'images/aon3.jpg' },
+    { id: 'aon4', name: 'A Otro Nivel Oreo Total', desc: 'Helado, galleta oreo triturada, crema y chocolate', price: 11500, image: 'images/aon4.jpg' },
+    { id: 'aon5', name: 'A Otro Nivel Tropical', desc: 'Helado, mango, piña, coco y lechera', price: 11000, image: 'images/aon5.jpg' },
+    { id: 'aon6', name: 'A Otro Nivel Nutella', desc: 'Helado, nutella, banano y avellanas', price: 12000, image: 'images/aon6.jpg' },
+    { id: 'aon7', name: 'A Otro Nivel Brownie Supremo', desc: 'Helado, brownie, chocolate y nueces', price: 12500, image: 'images/aon7.jpg' },
+    { id: 'aon8', name: 'A Otro Nivel Berries', desc: 'Helado, fresa, mora, arándanos y crema', price: 11500, image: 'images/aon8.jpg' },
+    { id: 'aon9', name: 'A Otro Nivel Maní Loco', desc: 'Helado, maní, chocolate y caramelo', price: 11000, image: 'images/aon9.jpg' },
+    { id: 'aon10', name: 'A Otro Nivel Galleta y Milo', desc: 'Helado, galletas, milo y lechera', price: 11000, image: 'images/aon10.jpg' },
+    { id: 'aon11', name: 'A Otro Nivel Volcán', desc: 'Helado, brownie caliente, chocolate derretido y crema', price: 13000, image: 'images/aon11.jpg' },
+    { id: 'aon12', name: 'A Otro Nivel Arcoíris', desc: 'Helado, gomitas, confites y crema', price: 11500, image: 'images/aon12.jpg' }
   ],
   Helados: [
     { id: 'hel1', name: 'Splot', desc: 'Helado, crema, cono y chicles', price: 13000, image: 'hel1.jpg' },
@@ -93,7 +103,17 @@ var data = {
   ],
   Bebidas: [
     { id: 'beb1', name: 'Limonada Natural', desc: 'Refrescante y ácida', price: 5000, image: 'images/beb1.jpg' },
-    { id: 'beb2', name: 'Café Especial', desc: 'Grano seleccionado', price: 4500, image: 'images/beb2.jpg' }
+    { id: 'beb2', name: 'Café Especial', desc: 'Grano seleccionado', price: 4500, image: 'images/beb2.jpg' },
+    { id: 'beb3', name: 'Limonada de Coco', desc: 'Cremosa y tropical', price: 5500, image: 'images/beb3.jpg' },
+    { id: 'beb4', name: 'Jugo de Mango', desc: 'En agua o en leche', price: 5000, image: 'images/beb4.jpg' },
+    { id: 'beb5', name: 'Jugo de Mora', desc: 'En agua o en leche', price: 5000, image: 'images/beb5.jpg' },
+    { id: 'beb6', name: 'Malteada de Chocolate', desc: 'Cremosa y espesa', price: 7000, image: 'images/beb6.jpg' },
+    { id: 'beb7', name: 'Malteada de Fresa', desc: 'Cremosa y espesa', price: 7000, image: 'images/beb7.jpg' },
+    { id: 'beb8', name: 'Té Frío', desc: 'Suave y refrescante', price: 4000, image: 'images/beb8.jpg' },
+    { id: 'beb9', name: 'Chocolate Caliente', desc: 'Ideal para acompañar', price: 4500, image: 'images/beb9.jpg' },
+    { id: 'beb10', name: 'Agua de Panela con Limón', desc: 'Tradicional colombiana', price: 3500, image: 'images/beb10.jpg' },
+    { id: 'beb11', name: 'Soda Italiana', desc: 'Con jarabe de sabores', price: 6000, image: 'images/beb11.jpg' },
+    { id: 'beb12', name: 'Agua en Botella', desc: '500 ml', price: 2500, image: 'images/beb12.jpg' }
   ],
   Empanadas: [
     { id: 'emp1', name: 'Empanada de Carne', desc: 'Masa crocante', price: 3500, image: 'emp1.webp' },
@@ -136,6 +156,9 @@ var checkoutTotalEl = document.getElementById('checkoutTotal');
 var payBtn = document.getElementById('payBtn');
 var customerAddressInput = document.getElementById('customerAddress');
 var customerPhoneInput = document.getElementById('customerPhone');
+var paymentMethodGroup = document.getElementById('paymentMethodGroup');
+var paymentMethodSelector = document.getElementById('paymentMethodSelector');
+var selectedPaymentMethod = '';
 
 function loadCart() {
   var saved = localStorage.getItem('cartItems');
@@ -308,8 +331,20 @@ function openCheckout() {
   renderCheckoutSummary();
   clearFieldError(customerAddressInput);
   clearFieldError(customerPhoneInput);
+  paymentMethodGroup.classList.remove('invalid');
   checkoutModal.classList.add('open');
   checkoutOverlay.classList.add('open');
+}
+
+var methodButtons = paymentMethodSelector.querySelectorAll('.method-btn');
+for (var m = 0; m < methodButtons.length; m++) {
+  methodButtons[m].addEventListener('click', function() {
+    selectedPaymentMethod = this.dataset.method;
+    for (var k = 0; k < methodButtons.length; k++) {
+      methodButtons[k].classList.toggle('active', methodButtons[k] === this);
+    }
+    paymentMethodGroup.classList.remove('invalid');
+  });
 }
 
 function closeCheckout() {
@@ -321,7 +356,7 @@ goToCheckoutBtn.addEventListener('click', openCheckout);
 closeCheckoutBtn.addEventListener('click', closeCheckout);
 checkoutOverlay.addEventListener('click', closeCheckout);
 
-function buildWhatsAppMessage(address, phone) {
+function buildWhatsAppMessage(address, phone, paymentMethod) {
   var lines = ['¡Hola! Quiero hacer este pedido:', ''];
   for (var i = 0; i < cart.length; i++) {
     lines.push(cart[i].qty + 'x ' + cart[i].name + ' - $' + formatPrice(cart[i].price * cart[i].qty));
@@ -331,6 +366,7 @@ function buildWhatsAppMessage(address, phone) {
   lines.push('');
   lines.push('Dirección exacta y barrio: ' + address);
   lines.push('Teléfono de contacto: ' + phone);
+  lines.push('Método de pago: ' + paymentMethod);
   return lines.join('\n');
 }
 
@@ -361,17 +397,23 @@ payBtn.addEventListener('click', function() {
 
   var addressValid = address.length >= 5;
   var phoneValid = isValidPhone(phone);
+  var methodValid = !!selectedPaymentMethod;
 
   setFieldError(customerAddressInput, !addressValid);
   setFieldError(customerPhoneInput, !phoneValid);
+  paymentMethodGroup.classList.toggle('invalid', !methodValid);
 
-  if (!addressValid || !phoneValid) {
-    showToast('Completa la dirección y el teléfono para continuar');
-    (addressValid ? customerPhoneInput : customerAddressInput).focus();
+  if (!addressValid || !phoneValid || !methodValid) {
+    showToast('Completa la dirección, el teléfono y el método de pago para continuar');
+    if (!addressValid) {
+      customerAddressInput.focus();
+    } else if (!phoneValid) {
+      customerPhoneInput.focus();
+    }
     return;
   }
 
-  var message = buildWhatsAppMessage(address, phone);
+  var message = buildWhatsAppMessage(address, phone, selectedPaymentMethod);
   window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message), '_blank');
   showToast('Redirigiendo a WhatsApp...');
   cart = [];
@@ -379,6 +421,10 @@ payBtn.addEventListener('click', function() {
   updateCartCount();
   customerAddressInput.value = '';
   customerPhoneInput.value = '';
+  selectedPaymentMethod = '';
+  for (var b = 0; b < methodButtons.length; b++) {
+    methodButtons[b].classList.remove('active');
+  }
   closeCheckout();
 });
 

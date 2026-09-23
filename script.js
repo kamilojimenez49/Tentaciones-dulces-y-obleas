@@ -8,44 +8,46 @@
 var categories = ['Obleas', 'A Otro Nivel', 'Helados', 'Repollas', 'Postres', 'Bebidas', 'Empanadas'];
 
 var data = {
+  // Cada oblea tiene precio por tamaño: sizes.grande y sizes.pequena.
+  // Ajusta aquí los valores de "pequena" (por ahora quedaron iguales a "grande").
   Obleas: [
-    { id: 'obl1', name: 'Tradicional', desc: 'Manjar de leche', price: 8500, image: 'obl1.jpg' },
-    { id: 'obl2', name: 'Dietética', desc: 'Crema y queso o Crema y coco', price: 9000, image: 'obl2.jpg' },
-    { id: 'obl3', name: 'Campesina', desc: 'Manjar de leche y Queso de hoja', price: 9000, image: 'obl3.jpg' },
-    { id: 'obl4', name: 'Primer beso', desc: 'Manjar de leche y Crema ', price: 7500, image: 'obl4.jpg' },
-    { id: 'obl5', name: 'Noviazgo', desc: 'Manjar de leche y Queso', price: 9500, image: 'obl5.jpg' },
-    { id: 'obl6', name: 'Primer Amor', desc: 'Manjar de leche , Dulce de Mora y Crema', price: 8500, image: 'obl6.jpg' },
-    { id: 'obl7', name: ' Amor Apasionado', desc: 'Dulce de mora , Queso y Crema', price: 8500, image: 'obl7.jpg' },
-    { id: 'obl8', name: 'Compromiso ', desc: 'Manjar de leche y Dulce de mora', price: 9000, image: 'obl8.jpg' },
-    { id: 'obl9', name: 'Amor Platonico', desc: 'Manjar de leche , Dulce de Maracuya Queso y Crema', price: 9000, image: 'obl9.jpg' },
-    { id: 'obl10', name: 'Mi Gran Amor', desc: 'Manjar de leche , Dulce de mora , Queso y Crema', price: 8000, image: 'obl10.jpg' },
-    { id: 'obl11', name: 'Reconciliacion', desc: 'Manjar de leche , Queso , Crema y Lechera', price: 9000, image: 'obl11.jpg' },
-    { id: 'obl12', name: 'Amor Libre', desc: 'Manjar de leche , Queso y Crema', price: 9500, image: 'obl12.jpg' },
-    { id: 'obl13', name: 'Matrimonio', desc: 'Manjar de leche , Dulce de Durazno , Queso y Crema', price: 9000, image: 'obl13.jpg' },
-    { id: 'obl14', name: 'Aguayique', desc: 'Manjar de leche , Queso y Dulce de Guayaba', price: 8000, image: 'obl14.jpg' },
-    { id: 'obl15', name: 'Amorique', desc: 'Manjar de leche , Queso y Dulce de Mora', price: 9500, image: 'obl15.jpg' },
-    { id: 'obl16', name: 'Tentacion', desc: 'Manjar de leche , Queso y Frutas ( Mango , Guanabana , Fresa)', price: 9500, image: 'obl16.jpg' },
-    { id: 'obl17', name: 'Antojito de Mango', desc: 'Manjar de leche , Crema , Mango y Lechera', price: 9000, image: 'obl17.jpg' },
-    { id: 'obl18', name: 'Amor Pecoso', desc: 'Manjar de leche , Queso , Crema y Chocolate ( Liquido o Rayado )', price: 9000, image: 'obl18.jpg' },
-    { id: 'obl19', name: 'Sensacion', desc: 'Manjar de leche ,  Crema , Guanabana y Lechera', price: 9000, image: 'obl19.jpg' },
-    { id: 'obl20', name: 'Ice', desc: 'Manjar de leche , Crema , Helado y Lechera', price: 8500, image: 'images/obl20.jpg' },
-    { id: 'obl21', name: 'Capuchino', desc: 'Manjar de cafe , Queso y Crema ', price: 9500, image: 'obl21.jpg' },
-    { id: 'obl22', name: 'Pasion de Fresa', desc: 'Manjar de leche , Crema , Trozos de fresa y Lechera', price: 10000, image: 'obl22.jpg' },
-    { id: 'obl23', name: 'Tropical', desc: 'Manjar de leche , Trozos de Piña y Lechera', price: 8500, image: 'images/obl23.jpg' },
-    { id: 'obl24', name: 'Fantasia', desc: 'Nutella , Trozos de Fresa y Crema', price: 9000, image: 'obl24.jpg' },
-    { id: 'obl25', name: 'Antojito de Durazno', desc: 'Manjar de leche , Crema , Trozos de Durazno y Lechera', price: 9000, image: 'obl25.jpg' },
-    { id: 'obl26', name: 'Destape', desc: 'Manjar de leche , Dulce de Guayaba , Queso y Crema', price: 8000, image: 'images/obl26.jpg' },
-    { id: 'obl27', name: 'Hawaiiana', desc: 'Manjar de leche , Dulce de piña y Queso', price: 9000, image: 'obl27.jpg' },
-    { id: 'obl28', name: 'Recreo', desc: 'Manjar de leche , Crema y Galleta oreo', price: 8000, image: 'obl28.jpg' },
-    { id: 'obl29', name: 'Exotica', desc: 'Manjar de leche , Cocada de leche y Crema', price: 9500, image: 'obl29.jpg' },
-    { id: 'obl30', name: 'Arcoiris', desc: 'Manjar de leche , Variedad de Dulces , Queso y Crema', price: 8000, image: 'obl30.jpg' },
-    { id: 'obl31', name: 'Afrodisiaca', desc: 'Manjar de leche , Dulce de borojo , Queso y Crema', price: 8500, image: 'obl31.jpg' },
-    { id: 'obl32', name: 'Amor Prohibido', desc: 'Manjar de leche , Dulce de cidra , Queso y Crema', price: 9000, image: 'obl32.jpg' },
-    { id: 'obl33', name: 'Divorcio', desc: 'Manjar de leche , Dulce de cidra y Queso', price: 9500, image: 'obl33.jpg' },
-    { id: 'obl34', name: 'Mujer Perfecta', desc: 'Manjar de leche , Breva , Queso y Crema', price: 9000, image: 'images/obl34.jpg' },
-    { id: 'obl35', name: 'Amor Eterno', desc: 'Manjar de leche , Brownie y Crema', price: 10000, image: 'obl35.jpg' },
-    { id: 'obl36', name: 'Mi Unica Ilusion', desc: 'Manjar de leche , Cocada de Tamarindo y Crema', price: 9500, image: 'obl36.jpg' },
-    { id: 'obl37', name: 'Luna de Miel', desc: 'Manajar de leche , Mielmesabe y Crema', price: 10500, image: 'obl37.jpg' }
+    { id: 'obl1', name: 'Tradicional', desc: 'Manjar de leche', sizes: { grande: 8500, pequena: 8500 }, image: 'obl1.jpg' },
+    { id: 'obl2', name: 'Dietética', desc: 'Crema y queso o Crema y coco', sizes: { grande: 9000, pequena: 9000 }, image: 'obl2.jpg' },
+    { id: 'obl3', name: 'Campesina', desc: 'Manjar de leche y Queso de hoja', sizes: { grande: 9000, pequena: 9000 }, image: 'obl3.jpg' },
+    { id: 'obl4', name: 'Primer beso', desc: 'Manjar de leche y Crema ', sizes: { grande: 7500, pequena: 7500 }, image: 'obl4.jpg' },
+    { id: 'obl5', name: 'Noviazgo', desc: 'Manjar de leche y Queso', sizes: { grande: 9500, pequena: 9500 }, image: 'obl5.jpg' },
+    { id: 'obl6', name: 'Primer Amor', desc: 'Manjar de leche , Dulce de Mora y Crema', sizes: { grande: 8500, pequena: 8500 }, image: 'obl6.jpg' },
+    { id: 'obl7', name: ' Amor Apasionado', desc: 'Dulce de mora , Queso y Crema', sizes: { grande: 8500, pequena: 8500 }, image: 'obl7.jpg' },
+    { id: 'obl8', name: 'Compromiso ', desc: 'Manjar de leche y Dulce de mora', sizes: { grande: 9000, pequena: 9000 }, image: 'obl8.jpg' },
+    { id: 'obl9', name: 'Amor Platonico', desc: 'Manjar de leche , Dulce de Maracuya Queso y Crema', sizes: { grande: 9000, pequena: 9000 }, image: 'obl9.jpg' },
+    { id: 'obl10', name: 'Mi Gran Amor', desc: 'Manjar de leche , Dulce de mora , Queso y Crema', sizes: { grande: 8000, pequena: 8000 }, image: 'obl10.jpg' },
+    { id: 'obl11', name: 'Reconciliacion', desc: 'Manjar de leche , Queso , Crema y Lechera', sizes: { grande: 9000, pequena: 9000 }, image: 'obl11.jpg' },
+    { id: 'obl12', name: 'Amor Libre', desc: 'Manjar de leche , Queso y Crema', sizes: { grande: 9500, pequena: 9500 }, image: 'obl12.jpg' },
+    { id: 'obl13', name: 'Matrimonio', desc: 'Manjar de leche , Dulce de Durazno , Queso y Crema', sizes: { grande: 9000, pequena: 9000 }, image: 'obl13.jpg' },
+    { id: 'obl14', name: 'Aguayique', desc: 'Manjar de leche , Queso y Dulce de Guayaba', sizes: { grande: 8000, pequena: 8000 }, image: 'obl14.jpg' },
+    { id: 'obl15', name: 'Amorique', desc: 'Manjar de leche , Queso y Dulce de Mora', sizes: { grande: 9500, pequena: 9500 }, image: 'obl15.jpg' },
+    { id: 'obl16', name: 'Tentacion', desc: 'Manjar de leche , Queso y Frutas ( Mango , Guanabana , Fresa)', sizes: { grande: 9500, pequena: 9500 }, image: 'obl16.jpg' },
+    { id: 'obl17', name: 'Antojito de Mango', desc: 'Manjar de leche , Crema , Mango y Lechera', sizes: { grande: 9000, pequena: 9000 }, image: 'obl17.jpg' },
+    { id: 'obl18', name: 'Amor Pecoso', desc: 'Manjar de leche , Queso , Crema y Chocolate ( Liquido o Rayado )', sizes: { grande: 9000, pequena: 9000 }, image: 'obl18.jpg' },
+    { id: 'obl19', name: 'Sensacion', desc: 'Manjar de leche ,  Crema , Guanabana y Lechera', sizes: { grande: 9000, pequena: 9000 }, image: 'obl19.jpg' },
+    { id: 'obl20', name: 'Ice', desc: 'Manjar de leche , Crema , Helado y Lechera', sizes: { grande: 8500, pequena: 8500 }, image: 'images/obl20.jpg' },
+    { id: 'obl21', name: 'Capuchino', desc: 'Manjar de cafe , Queso y Crema ', sizes: { grande: 9500, pequena: 9500 }, image: 'obl21.jpg' },
+    { id: 'obl22', name: 'Pasion de Fresa', desc: 'Manjar de leche , Crema , Trozos de fresa y Lechera', sizes: { grande: 10000, pequena: 10000 }, image: 'obl22.jpg' },
+    { id: 'obl23', name: 'Tropical', desc: 'Manjar de leche , Trozos de Piña y Lechera', sizes: { grande: 8500, pequena: 8500 }, image: 'images/obl23.jpg' },
+    { id: 'obl24', name: 'Fantasia', desc: 'Nutella , Trozos de Fresa y Crema', sizes: { grande: 9000, pequena: 9000 }, image: 'obl24.jpg' },
+    { id: 'obl25', name: 'Antojito de Durazno', desc: 'Manjar de leche , Crema , Trozos de Durazno y Lechera', sizes: { grande: 9000, pequena: 9000 }, image: 'obl25.jpg' },
+    { id: 'obl26', name: 'Destape', desc: 'Manjar de leche , Dulce de Guayaba , Queso y Crema', sizes: { grande: 8000, pequena: 8000 }, image: 'images/obl26.jpg' },
+    { id: 'obl27', name: 'Hawaiiana', desc: 'Manjar de leche , Dulce de piña y Queso', sizes: { grande: 9000, pequena: 9000 }, image: 'obl27.jpg' },
+    { id: 'obl28', name: 'Recreo', desc: 'Manjar de leche , Crema y Galleta oreo', sizes: { grande: 8000, pequena: 8000 }, image: 'obl28.jpg' },
+    { id: 'obl29', name: 'Exotica', desc: 'Manjar de leche , Cocada de leche y Crema', sizes: { grande: 9500, pequena: 9500 }, image: 'obl29.jpg' },
+    { id: 'obl30', name: 'Arcoiris', desc: 'Manjar de leche , Variedad de Dulces , Queso y Crema', sizes: { grande: 8000, pequena: 8000 }, image: 'obl30.jpg' },
+    { id: 'obl31', name: 'Afrodisiaca', desc: 'Manjar de leche , Dulce de borojo , Queso y Crema', sizes: { grande: 8500, pequena: 8500 }, image: 'obl31.jpg' },
+    { id: 'obl32', name: 'Amor Prohibido', desc: 'Manjar de leche , Dulce de cidra , Queso y Crema', sizes: { grande: 9000, pequena: 9000 }, image: 'obl32.jpg' },
+    { id: 'obl33', name: 'Divorcio', desc: 'Manjar de leche , Dulce de cidra y Queso', sizes: { grande: 9500, pequena: 9500 }, image: 'obl33.jpg' },
+    { id: 'obl34', name: 'Mujer Perfecta', desc: 'Manjar de leche , Breva , Queso y Crema', sizes: { grande: 9000, pequena: 9000 }, image: 'images/obl34.jpg' },
+    { id: 'obl35', name: 'Amor Eterno', desc: 'Manjar de leche , Brownie y Crema', sizes: { grande: 10000, pequena: 10000 }, image: 'obl35.jpg' },
+    { id: 'obl36', name: 'Mi Unica Ilusion', desc: 'Manjar de leche , Cocada de Tamarindo y Crema', sizes: { grande: 9500, pequena: 9500 }, image: 'obl36.jpg' },
+    { id: 'obl37', name: 'Luna de Miel', desc: 'Manajar de leche , Mielmesabe y Crema', sizes: { grande: 10500, pequena: 10500 }, image: 'obl37.jpg' }
   ],
   'A Otro Nivel': [
     { id: 'aon1', name: 'A Otro Nivel Original', desc: 'Nuestra combinación estrella', price: 10500, image: 'images/aon1.jpg' },
@@ -64,7 +66,7 @@ var data = {
     { id: 'hel10', name: 'Brownie', desc: 'Helado, crema y brownie', price: 17000, image: 'hel10.jpg' },
     { id: 'hel11', name: 'Copa Oreo', desc: 'Helado, crema, galletas oreo y chocolate', price: 16000, image: 'hel11.jpg' },
     { id: 'hel12', name: 'Copa Fantasía', desc: 'Helado, crema y trozos de durazno', price: 17000, image: 'hel12.jpg' },
-    { id: 'hel13', name: 'Merengon', desc: 'Divertido y colorido', price: 6000, image: 'images/hel13.jpg' },
+    { id: 'hel13', name: 'Merengon', desc: 'Divertido y colorido', price: 6000, image: 'hel13.png' },
     { id: 'hel14', name: 'Cholao pasion', desc: 'Suave y natural', price: 6000, image: 'hel14.jpg' },
     { id: 'hel15', name: 'Cholao ice', desc: 'Fruta exótica cremosa', price: 6500, image: 'hel15.jpg' },
     { id: 'hel16', name: 'Salpicon', desc: 'Dulce y refrescante', price: 6000, image: 'hel16.jpg' },
@@ -73,13 +75,17 @@ var data = {
     { id: 'hel19', name: 'Banana split', desc: 'Cremoso y tostado', price: 7000, image: 'hel19.jpg' },
     { id: 'hel20', name: 'Maracumango', desc: 'Con trozos de galleta', price: 7000, image: 'hel20.jpg' },
     { id: 'hel21', name: 'Ensalada de frutass', desc: 'Chocolate con trozos de brownie', price: 7000, image: 'hel21.jpg' },
-    { id: 'hel22', name: 'Parfait', desc: 'Clásico con chocolate', price: 6500, image: 'images/hel22.jpg' },
-    { id: 'hel23', name: 'Vaso de helado', desc: 'Mezcla frutal intensa', price: 6500, image: 'images/hel23.jpg' },
-    { id: 'hel24', name: 'Cono de helado', desc: 'Piña y coco tropical', price: 6500, image: 'images/hel24.jpg' }
+    { id: 'hel22', name: 'Parfait', desc: 'Clásico con chocolate', price: 6500, image: 'hel22.jpg' },
+    { id: 'hel23', name: 'Vaso de helado', desc: 'Mezcla frutal intensa', price: 6500, image: 'hel23.jpg' },
+    { id: 'hel24', name: 'Cono de helado', desc: 'Piña y coco tropical', price: 6500, image: 'hel24.png' }
   ],
   Repollas: [
-    { id: 'rep1', name: 'Repolla de Pollo', desc: 'Rellena y sazonada', price: 7000, image: 'images/rep1.jpg' },
-    { id: 'rep2', name: 'Repolla Mixta', desc: 'Carne y vegetales', price: 7500, image: 'images/rep2.jpg' }
+    { id: 'rep1', name: 'Repolla Tradicional', desc: 'Manjar de leche', price: 7000, image: 'images/rep1.jpg' },
+    { id: 'rep2', name: 'Repolla Noviazgo', desc: 'Manjar de leche y Queso', price: 7500, image: 'images/rep2.jpg' },
+    { id: 'rep3', name: 'Repolla Amor libre', desc: 'Manjar de leche , Queso y Crema', price: 7500, image: 'images/rep3.jpg' },
+    { id: 'rep4', name: 'Repolla Compromiso', desc: 'Manjar de leche y Dulce de mora', price: 7000, image: 'images/rep4.jpg' },
+    { id: 'rep5', name: 'Repolla Frutti tentacion', desc: 'Manjar de leche, Mango , fresa , Guanabana y Crema', price: 8000, image: 'images/rep5.jpg' },
+    { id: 'rep6', name: 'Repolla Gran amor', desc: 'Manjar de leche , Queso , Crema y Dulce de mora', price: 8500, image: 'images/rep6.jpg' }
   ],
   Postres: [
     { id: 'pos1', name: 'Torta de Tres Leches', desc: 'Porción individual', price: 8000, image: 'images/pos1.jpg' },
@@ -90,7 +96,7 @@ var data = {
     { id: 'beb2', name: 'Café Especial', desc: 'Grano seleccionado', price: 4500, image: 'images/beb2.jpg' }
   ],
   Empanadas: [
-    { id: 'emp1', name: 'Empanada de Carne', desc: 'Masa crocante', price: 3500, image: 'images/emp1.jpg' },
+    { id: 'emp1', name: 'Empanada de Carne', desc: 'Masa crocante', price: 3500, image: 'emp1.webp' },
     { id: 'emp2', name: 'Empanada de Pollo', desc: 'Relleno jugoso', price: 3500, image: 'images/emp2.jpg' }
   ]
 };
@@ -99,10 +105,10 @@ var data = {
 // DATOS DE CONTACTO - Edita aquí
 // ============================================
 var contact = {
-  email: 'contacto@tentaciones.com',
-  phone: '+57 318 693 2963',
-  address: 'Floridablanca, Santander',
-  instagram: '@tentaciones.dulces',
+  email: 'ventastentacionesdo@gmail.com',
+  phone: '318 693 2963',
+  address: 'Cra 7 # 4-51, Floridablanca, Casco Antiguo',
+  instagram: '@tentaciones_dulcesyobleas',
   tiktok: '@tentaciones.dulces'
 };
 
@@ -415,6 +421,22 @@ function buildCategoryPanel(cat) {
   return panel;
 }
 
+var sizeLabels = { grande: 'Grande', pequena: 'Pequeña' };
+
+function buildSizeButton(key, price, buttons, onSelect) {
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'size-btn';
+  btn.textContent = sizeLabels[key] + ' · $' + formatPrice(price);
+  btn.addEventListener('click', function() {
+    onSelect(key);
+    for (var k in buttons) {
+      buttons[k].classList.toggle('active', k === key);
+    }
+  });
+  return btn;
+}
+
 function buildCard(item) {
   var card = document.createElement('div');
   card.className = 'item-card';
@@ -446,21 +468,55 @@ function buildCard(item) {
   desc.className = 'item-desc';
   desc.textContent = item.desc;
 
+  var hasSizes = !!item.sizes;
+  var selectedSize = 'grande';
+
   var priceRow = document.createElement('div');
   priceRow.className = 'item-price-row';
-  priceRow.innerHTML = '$<span class="item-price">' + formatPrice(item.price) + '</span>';
+
+  function updatePrice() {
+    var price = hasSizes ? item.sizes[selectedSize] : item.price;
+    priceRow.innerHTML = '$<span class="item-price">' + formatPrice(price) + '</span>';
+  }
+
+  info.appendChild(name);
+  info.appendChild(desc);
+
+  if (hasSizes) {
+    var sizeRow = document.createElement('div');
+    sizeRow.className = 'size-selector';
+    var sizeButtons = {};
+
+    var sizeKeys = ['grande', 'pequena'];
+    for (var i = 0; i < sizeKeys.length; i++) {
+      var key = sizeKeys[i];
+      sizeButtons[key] = buildSizeButton(key, item.sizes[key], sizeButtons, function(newSize) {
+        selectedSize = newSize;
+        updatePrice();
+      });
+    }
+    sizeButtons[selectedSize].classList.add('active');
+
+    for (var s in sizeButtons) {
+      sizeRow.appendChild(sizeButtons[s]);
+    }
+    info.appendChild(sizeRow);
+  }
+
+  updatePrice();
+  info.appendChild(priceRow);
 
   var addToCartBtn = document.createElement('button');
   addToCartBtn.className = 'btn-add';
   addToCartBtn.textContent = 'AGREGAR AL CARRITO 🛒';
   addToCartBtn.addEventListener('click', function() {
-    addToCart(item);
-    showToast(item.name + ' agregado al carrito');
+    var cartItem = hasSizes
+      ? { id: item.id + '-' + selectedSize, name: item.name + ' (' + sizeLabels[selectedSize] + ')', price: item.sizes[selectedSize], image: item.image }
+      : item;
+    addToCart(cartItem);
+    showToast(cartItem.name + ' agregado al carrito');
   });
 
-  info.appendChild(name);
-  info.appendChild(desc);
-  info.appendChild(priceRow);
   info.appendChild(addToCartBtn);
 
   card.appendChild(info);
